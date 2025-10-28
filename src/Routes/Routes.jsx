@@ -6,6 +6,7 @@ import { Component } from "react";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Components/SignUp/SignUp";
 import BookDetails from "../Pages/BookDetails/BookDetails";
+import ListedBook from "../Pages/ListedBook/ListedBook";
 
 export const router = createBrowserRouter([
     {
@@ -18,6 +19,11 @@ export const router = createBrowserRouter([
                 loader: () => fetch("booksData.json"),
                 path: "/",
                 Component: Home,
+            },
+            {
+                path:"/listed-book",
+                  loader: () => fetch("booksData.json"),
+                Component:ListedBook
             },
             {
                 path: '/sign-in',

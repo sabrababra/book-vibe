@@ -1,4 +1,4 @@
-const getStoreBooks=()=>{
+const getStoreBooksWishList=()=>{
     const storeBookSTR=localStorage.getItem("wishList");
     if(storeBookSTR){
         const storeBookData=JSON.parse(storeBookSTR);
@@ -9,7 +9,7 @@ const getStoreBooks=()=>{
 }
 
 const addToStoreDBWishList=(id)=>{
-    const storeBookData=getStoreBooks();
+    const storeBookData=getStoreBooksWishList();
     if(storeBookData.includes(id)){
         alert("This book is already added!!")
     }else{
@@ -19,4 +19,4 @@ const addToStoreDBWishList=(id)=>{
     }
 }
 
-export {addToStoreDBWishList}
+export {addToStoreDBWishList,getStoreBooksWishList}
