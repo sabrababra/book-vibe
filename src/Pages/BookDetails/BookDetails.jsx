@@ -2,6 +2,10 @@ import React from 'react';
 import { useLoaderData, useParams } from 'react-router';
 import { addToStoreDB } from '../../Components/Utilities/AddToDB';
 import { addToStoreDBWishList } from '../../Components/Utilities/AddToDBWish';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+
 
 const BookDetails = () => {
     const { id } = useParams();
@@ -10,14 +14,26 @@ const BookDetails = () => {
     const singleBook = data.find(item => item.bookId === Number(id));
 
 
-    const { image, bookName, author, rating, category, tags, totalPages, review, publisher, yearOfPublishing, } = singleBook
+    const { image, bookName, author, rating, category, tags, totalPages, review, publisher, yearOfPublishing, } = singleBook;
 
-    const handleMarkAsRead=(id)=>{
+    const MySwal = withReactContent(Swal)
+
+    const handleMarkAsRead = (id) => {
         addToStoreDB(id);
+        Swal.fire({
+            title: "Good job!",
+            text: "Added Read List Successfully!",
+            icon: "success"
+        });
     }
 
-    const handleMarkAsWishlist=(id)=>{
+    const handleMarkAsWishlist = (id) => {
         addToStoreDBWishList(id)
+        Swal.fire({
+            title: "Good job!",
+            text: "Added Wish List Successfully!",
+            icon: "success"
+        });
     }
 
     return (
@@ -57,12 +73,12 @@ const BookDetails = () => {
                     <span className="font-semibold text-base work-sans-font">{rating}</span>
                     <div className='mt-3'>
                         <button
-                        onClick={()=>handleMarkAsRead(Number(id))}
-                         className='btn text-lg font-semibold mr-1'
-                         >Read</button>
-                        <button 
-                        onClick={()=>handleMarkAsWishlist(Number(id))}
-                        className='btn text-lg font-semibold text-white bg-[#50B1C9]'>Wishlist</button>
+                            onClick={() => handleMarkAsRead(Number(id))}
+                            className='btn text-lg font-semibold mr-1'
+                        >Read</button>
+                        <button
+                            onClick={() => handleMarkAsWishlist(Number(id))}
+                            className='btn text-lg font-semibold text-white bg-[#50B1C9]'>Wishlist</button>
                     </div>
                 </div>
 

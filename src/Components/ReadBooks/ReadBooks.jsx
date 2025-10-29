@@ -8,11 +8,11 @@ import { Link } from 'react-router';
 const ReadBooks = ({ book }) => {
     const { image, author, bookName, category, publisher, rating, tags, totalPages, yearOfPublishing, bookId } = book
     return (
-        <div className='border-1 border-[rgb(19,19,19,15%)] p-5 rounded-2xl flex gap-5 my-5'>
+        <div className='border border-[rgb(19,19,19,15%)] p-5 rounded-2xl flex gap-5 my-5'>
             <div className='bg-[#F3F3F3] rounded-2xl p-10 '>
                 <img className='w-30 h-48  mx-auto' src={image} alt="" />
             </div>
-            <div className=' space-y-3'>
+            <div className='space-y-3 w-full'>
                 <h1 className='font-bold text-2xl'>{bookName}</h1>
                 <h4 className='text-[rgb(19,19,19,80%)] text-base font-medium'>By: {author}</h4>
                 <div className=' space-y-3'>
@@ -37,6 +37,7 @@ const ReadBooks = ({ book }) => {
                     </div>
 
                 </div>
+                <div className='border border-[#13131326] w-full'></div>
                 <div className='space-x-3'>
                     <button className='text-base text-[#328EFF] font-medium bg-[rgb(50,142,255,15%)] px-3 py-1 rounded-3xl'>Category: {category}</button>
 
