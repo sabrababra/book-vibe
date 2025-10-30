@@ -12,7 +12,7 @@ const Home = () => {
         .then(d=>setData(d))
     },[])
     return (
-        <div>
+        <div className='mt-5 mb-20'>
             <Banner/>
             <Books data={data}/>
         </div>

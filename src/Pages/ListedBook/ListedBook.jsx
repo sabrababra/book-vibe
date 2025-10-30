@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import arrow from '../../assets/images/buttonArrow.png';
-import { useLoaderData } from 'react-router';
 import { getStoreBooks } from '../../Components/Utilities/AddToDB';
 import ReadBooks from '../../Components/ReadBooks/ReadBooks';
 import { getStoreBooksWishList } from '../../Components/Utilities/AddToDBWish';
@@ -11,7 +10,13 @@ const ListedBook = () => {
     const [sort, setSort] = useState('');
     const [readList, setReadList] = useState([]);
     const [wishList, setWishList] = useState([]);
-    const data = useLoaderData();
+    
+    const [data,setData]=useState([]);
+    useEffect(()=>{
+        fetch("booksData.json")
+        .then(res=>res.json())
+        .then(x=>setData(x))
+    },[])
 
     useEffect(() => {
         const storedReadBooks = getStoreBooks();
@@ -45,7 +50,7 @@ const ListedBook = () => {
     }
 
     return (
-        <div>
+        <div className='mt-5 mb-20'>
             <div className='bg-[rgb(19,19,19,5%)] rounded-2xl p-5 w-full mt-5'>
                 <h1 className='text-center font-bold text-2xl'>Books</h1>
             </div>

@@ -3,7 +3,6 @@ import Book from '../Book/Book';
 
 const Books = ({ data }) => {
 
-    console.log("data",data);
     return (
         <div className='mt-13 '>
             <h1 className='font-bold text-3xl text-center'>Book</h1>

@@ -5,11 +5,14 @@ import Footer from '../../Components/Footer/Footer';
 
 const Root = () => {
     return (
-        <div className='w-10/12 mx-auto playfair-display-font'>
+       <div>
+         <div className='w-10/12 mx-auto playfair-display-font'>
             <Navbar/>
             <Outlet/>
-            <Footer/>
+            
         </div>
+        <Footer/>
+       </div>
     );
 };
 

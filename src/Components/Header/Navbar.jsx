@@ -1,11 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { useLocation } from "react-router";
+
 
 const Navbar = () => {
+    const location = useLocation();
+    const currentPath = location.pathname;
+
+    const getLinkClass=(path)=>{
+         return currentPath === path
+            ? "btn btn-outline border-[#23BE0A] text-[#23BE0A] font-semibold mx-3"
+            : "work-sans-font text-lg text-[rgb(19,19,19,80%)] mx-3";
+    }
+
     const link = <>
-        <Link className='work-sans-font text-lg text-[rgb(19,19,19,80%)] mx-3' to='/'>Home</Link>
-        <Link className='work-sans-font text-lg text-[rgb(19,19,19,80%)] mx-3' to='/listed-book'>Listed Books</Link>
-        <Link className='work-sans-font text-lg text-[rgb(19,19,19,80%)] mx-3' to='/pages-read'>Pages to Read</Link>
+        <Link className={getLinkClass('/')} to='/'>Home</Link>
+            <Link className={getLinkClass('/listed-book')} to='/listed-book'>Listed Books</Link>
+            <Link className={getLinkClass('/pages-read')} to='/pages-read'>Pages to Read</Link>
+
     </>
     return (
         <div className="navbar bg-base-100">
@@ -35,7 +47,7 @@ const Navbar = () => {
                     <Link to='/sign-up'>Sign up</Link>
                 </button>
             </div>
-            
+
         </div>
     );
 };
