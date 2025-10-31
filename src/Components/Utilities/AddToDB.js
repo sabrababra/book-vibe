@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 const getStoreBooks=()=>{
     const storeBookSTR=localStorage.getItem("readList");
     if(storeBookSTR){
@@ -8,6 +10,9 @@ const getStoreBooks=()=>{
     }
 }
 
+ const MySwal = withReactContent(Swal)
+
+
 const addToStoreDB=(id)=>{
     const storeBookData=getStoreBooks();
     if(storeBookData.includes(id)){
@@ -16,6 +21,12 @@ const addToStoreDB=(id)=>{
         storeBookData.push(id);
         const data=JSON.stringify(storeBookData);
         localStorage.setItem("readList",data);
+        Swal.fire({
+                title: "Good job!",
+                text: "Added Read List Successfully!",
+                icon: "success"
+            });
+        
     }
 }
 

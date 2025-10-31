@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { addToStoreDB } from '../../Components/Utilities/AddToDB';
 import { addToStoreDBWishList } from '../../Components/Utilities/AddToDBWish';
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+// import Swal from 'sweetalert2'
+// import withReactContent from 'sweetalert2-react-content'
 
 
 
@@ -22,24 +22,15 @@ const BookDetails = () => {
        },[id])
    
 
-    const MySwal = withReactContent(Swal)
+   
 
     const handleMarkAsRead = (id) => {
         addToStoreDB(id);
-        Swal.fire({
-            title: "Good job!",
-            text: "Added Read List Successfully!",
-            icon: "success"
-        });
     }
 
     const handleMarkAsWishlist = (id) => {
         addToStoreDBWishList(id)
-        Swal.fire({
-            title: "Good job!",
-            text: "Added Wish List Successfully!",
-            icon: "success"
-        });
+       
     }
 
     return (
